@@ -20,11 +20,11 @@ export class SearchComponent implements OnInit {
 
   constructor(private spotifyService:SpotifyService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   search() {
     //TODO: call search function in spotifyService and parse response
+    console.log("Searched: " + this.searchString);
   }
 
 }
