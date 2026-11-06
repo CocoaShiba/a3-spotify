@@ -42,13 +42,29 @@ export class SpotifyService {
     //Depending on the category (artist, track, album), return an array of that type of data.
     //JavaScript's "map" function might be useful for this, but there are other ways of building the array.
 
-    var requestString = '/search/' + category + '/' + encodeURIComponent(resource);
-
+    var albumArray: Array<AlbumData>;
+    var trackArray: Array<TrackData>;
     var artistArray: Array<ArtistData>;
 
-    return this.sendRequestToExpress(requestString).then((data) => {
+    var requestString = '/search/' + category + '/' + encodeURIComponent(resource);
 
-      return artistArray;
+    return this.sendRequestToExpress(requestString).then((data) => {
+      if (category == "album")
+      {
+        albumArray = data.albums;
+        return albumArray;
+      }
+      else if (category == "track")
+      {
+        trackArray = data.tracks;
+        return trackArray;
+      }
+      else if (category == "artist")
+      {
+        artistArray = data.artists;
+        return artistArray;
+      }
+      return null as any;
     });
   }
 
