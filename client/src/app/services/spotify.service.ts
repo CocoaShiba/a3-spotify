@@ -22,6 +22,7 @@ export class SpotifyService {
 
     //firstValueFrom generates a Promise for whatever is returned first from the GET request.
     //You shouldn't need to update this part.
+    console.log(uri);
     return firstValueFrom(this.http.get(uri)).then((response) => {
       return response;
     }, (err) => {
@@ -75,7 +76,7 @@ export class SpotifyService {
   getTopTracksForArtist(artistId:string):Promise<TrackData[]> {
     //TODO: use the top tracks endpoint to make a request to express.
     var requestString = '/artist-top-tracks/' + encodeURIComponent(artistId);
-
+  
     return this.sendRequestToExpress(requestString).then((data) => {
       return data.items.map((result) => {
         return new TrackData(result);
