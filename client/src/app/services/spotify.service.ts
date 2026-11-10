@@ -46,18 +46,18 @@ export class SpotifyService {
 
     return this.sendRequestToExpress(requestString).then((data) => {
        return data[category + "s"].items.map((result) => {
-      if (category == "album")
-      {
-        return new AlbumData(result);
-      }
-      else if (category == "track")
-      {
-        return new TrackData(result);
-      }
-      else (category == "artist")
-      {
-        return new ArtistData(result);
-      }
+        if (category == "album")
+        {
+          return new AlbumData(result);
+        }
+        else if (category == "track")
+        {
+          return new TrackData(result);
+        }
+        else (category == "artist")
+        {
+          return new ArtistData(result);
+        }
       });
     });
   }
