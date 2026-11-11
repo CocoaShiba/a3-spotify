@@ -18,6 +18,8 @@ export class SpotifyService {
   private sendRequestToExpress(endpoint:string):Promise<any> {
     //TODO: use the injected http Service to make a get request to the Express endpoint and return the response.
     //Specifically, update the URI according to the base URL for express and the endpoint.
+
+    //Append the specific endpoint to the end of the base URL
     var uri:string = this.expressBaseUrl + endpoint;
 
     //firstValueFrom generates a Promise for whatever is returned first from the GET request.
@@ -46,7 +48,7 @@ export class SpotifyService {
     var requestString = '/search/' + category + '/' + encodeURIComponent(resource);
 
     return this.sendRequestToExpress(requestString).then((data) => {
-       return data[category + "s"].items.map((result) => {
+       return data[category + "s"].items.map((result) => { //Category names found on Spotify's API website
         if (category == "album")
         {
           return new AlbumData(result);
