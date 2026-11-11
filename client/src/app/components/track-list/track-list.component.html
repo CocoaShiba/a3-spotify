@@ -26,7 +26,7 @@
 				<td>{{i+1}}</td>
 				<td>
 					<!--TODO: link to the endpoint for that track, display the track's name-->
-					<a [href]="song.url">{{song.name}}</a>
+					<a href="http://localhost:4200/track/{{song.id}}">{{song.name}}</a>
 				</td>
 				<!--TODO: display the track's duration-->
 				<td>{{song.durationStr}}</td>
@@ -38,7 +38,7 @@
 				<!--TODO: Use @if to hide if hideAlbum is true; link to the album's endpoint and display the album's name-->
 				@if (!hideAlbum)
 				{
-					<td><a [href]="song.album.url">{{song.album.name}}</a></td>
+					<td><a href="http://localhost:4200/album/{{song.album.id}}">{{song.album.name}}</a></td>
 				}
 			</tr>
 			}	
